@@ -1,3 +1,12 @@
+
+$(document).ready(function(){
+    $("table tr").hover(function(){
+        $(this).children("td").css('background-color','#f4f5f5');
+    },function(){
+        $(this).children("td").css('background-color','');
+    })
+});
+
 function getSum(index){
   var inputName = "col" + index;
   var inputs = document.getElementsByName(inputName);
