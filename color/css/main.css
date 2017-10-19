@@ -1,0 +1,38 @@
+*{
+  padding:0;
+  margin:0;
+  font:12px "arial";
+  color:#72aeb5;
+}
+.box {
+  width: 100%;
+  background-color:#fff;
+}
+
+.box ul {
+  list-style: none;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+}
+
+.box ul li{
+  width:10%;
+  margin:10px;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.box ul li div:first-child{
+  width:100%;
+  height:50px;
+  border-radius: 5px;
+}
+
+.box ul li div:last-child{
+  width:100%;
+  margin-top:3px;
+  font-size:1.2rem;
+  text-align: center;
+}

@@ -1,0 +1,26 @@
+.main{
+  background:url(../img/background2.jpg);
+  background-size: cover;
+  -webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -ms-filter: blur(15px);
+  -o-filter: blur(15px);
+  filter: blur(15px);
+}
+
+.content{
+  width:100vw;
+  height:100vh;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content div:first-child{
+  background: hsla(0,0%,100%,.3);
+  filter: blur(20px);
+  width:60vw;
+  height:5vh;
+}
+

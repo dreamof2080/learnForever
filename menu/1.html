@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>1</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Jeffry.Liu">
+  <meta name="description" content="learnforever">
+  <meta name="Copyright" content="Copyright Jeffry.Liu">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/1.css" type="text/css">
+</head>
+<body>
+<header class="header">
+  <div class="leftHeader">
+    <p>Learn Forever</p>
+  </div>
+  <div class="rightHeader">
+    <div class="headerMenu">
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+  </div>
+</header>
+<nav class="nav">
+  <ul>
+    <li><a>Accountancy</a></li>
+    <li><a>Tax & legal</a></li>
+    <li><a>Corporate finance</a></li>
+    <li><a>Contact</a></li>
+    <li><a>FR EN</a></li>
+  </ul>
+</nav>
+<main class="main">
+  <div>
+    例子原型：http://weareadaptable.com/
+  </div>
+</main>
+
+<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script>
+  var state = 0;
+  $(".header .headerMenu").on("click",function(){
+    if(state==0){
+      $(this).find("i").eq(0).hide();
+      $(this).find("i").eq(1).css("top","8px").css("transform","rotate(45deg)");
+      $(this).find("i").eq(2).css("transform","rotate(-45deg)");
+      $("body").css("background","rgba(220, 213, 213, 0.32)");
+      $(".nav").css("top","10vh");
+      state = 1;
+    }else{
+      $(this).find("i").eq(0).show();
+      $(this).find("i").eq(1).css("top","0").css("transform","none");
+      $(this).find("i").eq(2).css("transform","none");
+      $(".nav").css("top","-100vh");
+      $("body").css("background","#ffffff");
+      state = 0;
+    }
+  });
+</script>
+</body>
+</html>

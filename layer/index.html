@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>弹出层</title>
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+</head>
+<body>
+<div class="box">
+  <ul>
+    <li><div data-sign="1" class="layer_1"><img src="img/layer1.png"/></div><div data-sign="1" class="layer_1">No.1</div></li>
+    <li><div data-sign="2" class="layer_2"><img src="img/layer2.png"/></div><div data-sign="2" class="layer_2">No.2</div></li>
+    <li><div style="background-color:#f4f5f5"></div><div></div></li>
+    <li><div style="background-color:#f6f6f6"></div><div></div></li>
+    <li><div style="background-color:#edeff0"></div><div></div></li>
+
+  </ul>
+
+</div>
+
+<div class="warning layer1">
+  <div class="con">
+    <div class="tit">
+      <p>提示</p>
+    </div>
+    <div class="audit">
+      <div class="other">这是第一个弹出层</div>
+    </div>
+    <div class="warningbtn"><p>确定</p></div>
+  </div>
+</div>
+
+<div class="warning layer2">
+  <div class="con">
+    <div class="tit">
+      <p>提示</p>
+    </div>
+    <div class="audit">
+      <div class="other">
+        <span class="warningspan">这是第二个弹出层</span>
+      </div>
+    </div>
+    <div class="warningbtn"><a onclick="hide($('.layer2'));">确定</a><a onclick="hide($('.layer2'));">取消</a></div>
+  </div>
+</div>
+<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="js/main.js" defer="defer"></script>
+</body>
+</html>

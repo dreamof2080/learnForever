@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>表单</title>
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/table1.css" type="text/css">
+</head>
+<body>
+<div class="menu">
+
+</div>
+<div class="content">
+    <table cellspacing="0" cellpadding="0">
+      <COLGROUP>
+        <COL width="10%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="7%">
+        <COL width="6%"></COLGROUP>
+      <thead>
+      <tr>
+        <th class="th1">项目名称</th>
+        <th colspan="2">table颜色设计器</th>
+        <th class="th1">事业部</th>
+        <th colspan="2">开发部</th>
+        <th class="th1">项目经理</th>
+        <th colspan="2">刘春生</th>
+        <th class="th1">创建人</th>
+        <th colspan="4">刘春生</th>
+      </tr>
+      <tr>
+        <th class="th2" rowspan="2">预算部门</th>
+        <th class="th2" colspan="13">项目阶段</th>
+      </tr>
+      <tr>
+        <th class="th3">EVT1</th>
+        <th class="th3">DVT1</th>
+        <th class="th3">EVT2</th>
+        <th class="th3">DVT2</th>
+        <th class="th3">EVT3</th>
+        <th class="th3">DVT3</th>
+        <th class="th3">DVT4</th>
+        <th class="th3">PVT1</th>
+        <th class="th3">PVT2</th>
+        <th class="th3">PVT3</th>
+        <th class="th3">PVT4</th>
+        <th class="th3">MP</th>
+        <th class="th3">PROTO</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="td1">市场部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">产品经营部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">硬件部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">软件部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">结构部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">硬件测试</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">软件测试</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">工艺工程部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">售后服务部</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">项目部（客户需求）</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">客户支持部（认证）</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">其他</td>
+        <td class="td2"><input type="text" name="col1" onchange="getSum(1);"/></td>
+        <td class="td2"><input type="text" name="col2" onchange="getSum(2);"/></td>
+        <td class="td2"><input type="text" name="col3" onchange="getSum(3);"/></td>
+        <td class="td2"><input type="text" name="col4" onchange="getSum(4);"/></td>
+        <td class="td2"><input type="text" name="col5" onchange="getSum(5);"/></td>
+        <td class="td2"><input type="text" name="col6" onchange="getSum(6);"/></td>
+        <td class="td2"><input type="text" name="col7" onchange="getSum(7);"/></td>
+        <td class="td2"><input type="text" name="col8" onchange="getSum(8);"/></td>
+        <td class="td2"><input type="text" name="col9" onchange="getSum(9);"/></td>
+        <td class="td2"><input type="text" name="col10" onchange="getSum(10);"/></td>
+        <td class="td2"><input type="text" name="col11" onchange="getSum(11);"/></td>
+        <td class="td2"><input type="text" name="col12" onchange="getSum(12);"/></td>
+        <td class="td2"><input type="text" name="col13" onchange="getSum(13);"/></td>
+      </tr>
+      <tr>
+        <td class="td1">合计</td>
+        <td class="td3"><input type="text" id="total1" readonly/></td>
+        <td class="td3"><input type="text" id="total2" readonly/></td>
+        <td class="td3"><input type="text" id="total3" readonly/></td>
+        <td class="td3"><input type="text" id="total4" readonly/></td>
+        <td class="td3"><input type="text" id="total5" readonly/></td>
+        <td class="td3"><input type="text" id="total6" readonly/></td>
+        <td class="td3"><input type="text" id="total7" readonly/></td>
+        <td class="td3"><input type="text" id="total8" readonly/></td>
+        <td class="td3"><input type="text" id="total9" readonly/></td>
+        <td class="td3"><input type="text" id="total10" readonly/></td>
+        <td class="td3"><input type="text" id="total11" readonly/></td>
+        <td class="td3"><input type="text" id="total12" readonly/></td>
+        <td class="td3"><input type="text" id="total13" readonly/></td>
+      </tr>
+      </tbody>
+    </table>
+</div>
+<script type="text/javascript" src="js/table1.js" defer="defer"></script>
+</body>
+</html>

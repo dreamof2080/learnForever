@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>2</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Jeffry.Liu">
+  <meta name="description" content="learnforever">
+  <meta name="Copyright" content="Copyright Jeffry.Liu">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/3.css" type="text/css">
+</head>
+<body>
+<main class="main">
+  <div>
+    浮动菜单栏，支持左右、上下滑动
+  </div>
+</main>
+<div class="menu">
+  <div class="con">
+    <img id="moveMenu" src="img/menu.png" class="icon">
+    <ul class="">
+      <li class="rgb1" data-layer="lay1">提交</li>
+      <!--<li class="rgb2" data-layer="lay2">保存</li>-->
+    </ul>
+  </div>
+</div>
+
+<script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+<script>
+  $(".menu .con").css("left","20px");
+  $('.menu .icon').on('click', function () {
+    var _ul = $(this).siblings('ul');
+    if (_ul.hasClass('on')) {
+      _ul.stop().animate({width: '0', padding: '0'}, 200);
+      $(".menu .icon").attr("src", "img/menu.png");
+    } else {
+      if($(".menu .con").css("left")=="20px"){//在屏幕左侧
+        $(".menu .con").css("width","50px");
+        $(".menu .con ul").css("left","40px");
+        $(".menu li").css("float","right");
+      }else{
+        $(".menu .con").css("width","");
+        $(".menu .con").css("min-width","50px");
+        $(".menu .con ul").css("left","");
+        $(".menu li").css("float","left");
+      }
+      _ul.stop().animate({width: _ul.find('li').length * 48 + 'px', padding: '0 20px 0 15px'}, 400);
+      $(".menu .icon").attr("src", "img/menu_open.png");
+    }
+    _ul.toggleClass('on');
+  });
+
+  var move = document.getElementById("moveMenu");
+  var menu = document.getElementsByClassName("menu")[0];
+  var menuCon = document.getElementsByClassName("con")[0];
+  var halfHeight=move.height/2;
+  /****************** 移动menu列表 *******************/
+  move.addEventListener("touchstart",function(){
+    addDefault();
+  });
+  move.addEventListener("touchmove",function(e){
+    menu.style.position="fixed";
+    //上下移动
+    if((e.touches[0].clientY-halfHeight-5)<=0){
+      menu.style.top==0;
+    }else if(e.touches[0].clientY+halfHeight>window.innerHeight){
+      menu.style.top==window.innerHeight;
+    }else{
+      menu.style.top=e.touches[0].clientY+halfHeight+"px";
+    }
+    //左右移动
+    menuCon.style.right = "";
+    menuCon.style.left = e.touches[0].clientX + "px";
+  });
+  move.addEventListener("touchend",function(event){
+      if(event.target.x>window.innerWidth/2){
+        menuCon.style.right = "20px";
+        menuCon.style.left = "";
+      }else{
+        menuCon.style.left = "20px";
+        menuCon.style.right = "";
+      }
+    document.ontouchmove=null;
+    document.ontouchend=null;
+    removeDefault();
+  });
+
+  function handler() {
+    event.preventDefault();
+  }
+  function addDefault() {
+    document.addEventListener("touchmove",handler,false);
+  }
+  function removeDefault() {
+    document.removeEventListener("touchmove",handler,false);
+  }
+</script>
+</body>
+</html>

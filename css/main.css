@@ -1,0 +1,40 @@
+*{
+  margin:0;
+  padding:0;
+}
+html{
+  font-size: 12px;
+}
+body{
+  background: rgba(66, 65, 65, 0.9);
+}
+.main{
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main div{
+  width: 100%;
+  height: 3rem;
+}
+.main div a{
+  width:100%;
+  height:100%;
+  text-decoration: none;
+  color:#FFFFFF;
+  border-bottom: 1px solid #737373;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.main div a:hover{
+  background:#FFFFFF;
+  color:#000000;
+  border-color: #00C389;
+  font-size: 1.5rem;
+}

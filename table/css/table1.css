@@ -1,0 +1,112 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.content{
+  width:100%;
+  text-align: center;
+  margin-top:30px;
+}
+
+.content table{
+  width: 95%;
+  margin: 0 auto;
+  background: #ffffff;
+  /*border: 1px solid #E8EDF2;*/
+  border-radius: 3px;
+  box-shadow: #E8EDF2 0 0 0 1px;
+  table-layout: fixed;
+}
+/*tbody带滚动条，thead不动*/
+/*
+.content table tbody {
+  display:block;
+  height:400px;
+  overflow-y:scroll;
+}
+
+.content table thead, .content tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;
+}
+
+.content table thead {
+  width: calc( 100% - 1em );
+}
+*/
+.content table thead tr:nth-child(n)>th{
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 12px;
+  padding:3px;
+  font-weight: normal;
+}
+
+.content table thead tr:nth-child(1)>th{
+  padding:6px;
+}
+
+.content table thead th:last-child{
+  border-right:0;
+}
+
+.content table tbody td{
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  font-size: 12px;
+  padding:3px;
+}
+.content table tbody td input{
+  width:90%;
+  text-align: center;
+  border: 1px solid #e4e4e4;
+  padding: 3px;
+  font-size: 1em;
+}
+
+.content table tbody td input:read-only{
+  border:0;
+}
+
+
+.content table tbody tr:last-child td{
+  border-bottom: 0;
+}
+
+.content table tbody tr:last-child>.td1{
+  background-color:#b0cc7f;
+}
+
+
+
+.content .th1,.content .th2{
+  background-color: rgba(145, 197, 206, 0.58);
+}
+
+.content .th3{
+  background-color: #91c8cf;
+}
+
+.content .td1{
+  background-color: rgba(191, 221, 226, 0.56);
+}
+
+.content .td2{
+  background-color: #ffffff;
+}
+
+.content .td3{
+  color: #ffffff;
+  border-right:1px solid #ffffff;
+}
+
+.content .td3 input{
+  background-color: #d7e1c8;
+  border:0;
+}
+
+.content table tbody td:last-child{
+  border-right:0;
+}

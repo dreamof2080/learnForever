@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>2</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Jeffry.Liu">
+  <meta name="description" content="learnforever">
+  <meta name="Copyright" content="Copyright Jeffry.Liu">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/2.css" type="text/css">
+</head>
+<body>
+<header class="header">
+  <a onclick="show();">点我</a>
+</header>
+<nav class="nav">
+  <ul>
+    <li><a>Accountancy</a></li>
+    <li><a>Tax & legal</a></li>
+    <li><a>Corporate finance</a></li>
+    <li><a>Contact</a></li>
+    <li><a>FR EN</a></li>
+  </ul>
+</nav>
+
+<script type="text/javascript" src="../js/jquery-1.8.0.min.js" defer="defer"></script>
+<script>
+  var state = 0;
+  function show(){
+    if(state==0){
+      $(".nav").css("opacity","1");
+      $(".nav").css("transition","opacity 200ms cubic-bezier(0.215,0.61,0.355,1)");
+      $(".nav ul li a").css("opacity","1");
+      $(".nav ul li a").css("transform","translate(0px, 0px)");
+      $(".nav ul li a").css("transition","opacity 400ms cubic-bezier(0.215,0.61,0.355,1),transform 400ms cubic-bezier(0.215,0.61,0.355,1)");
+      state = 1;
+    }else{
+      $(".nav").css("opacity","0");
+      $(".nav").css("transition","opacity 300ms cubic-bezier(0.55,0.055,0.675,0.19)");
+      $(".nav ul li a").css("opacity","0");
+      $(".nav ul li a").css("transform","translate(0px, -10px)");
+      $(".nav ul li a").css("transition","opacity 150ms cubic-bezier(0.55,0.055,0.675,0.19),transform 150ms cubic-bezier(0.55,0.055,0.675,0.19)");
+      state = 0;
+    }
+  }
+</script>
+</body>
+</html>
