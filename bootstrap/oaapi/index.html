@@ -64,20 +64,31 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#mathematics">Mathematics</a>
+                <li><a href="#dbinfo">数据库优化</a>
+                    <ul class="nav">
+                        <li><a href="#procedure"><span class="fa fa-angle-double-right"></span>存储过程</a>
+                        </li>
+                        <li><a href="#"><span class="fa fa-angle-double-right"></span>表</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
 
         <div class="col-md-9">
             <h2 id="permissionSet">权限配置说明</h2>
-            <p>权限之间存在包含的关系</p>
+            <p>权限分为：查看、新建、编辑、删除、共享，权限之间存在包含的关系。给分类或流程每配置一条权限规则则生成分类数据或权限数据时就多了一份权限数据（这一份权限数据根据规则的不同生成的数量也不同，若选择了某个部门，权限数据量为部门所有员工之和）</p>
             <figure class="highlight">
-              <p>配置新建权限，可以查看和编辑自己新建的数据，无法删除；</p>
-              <p>配置编辑权限，可编辑具有查看权限的数据，无法新建、删除；</p>
-              <p>配置删除权限，无法新建，可查看、编辑、删除所有数据；</p>
-              <p>配置共享权限，可查看、编辑所有数据，无法新建、删除。</p>
+                <ul>
+                    <li>配置新建权限，可以查看和编辑自己新建的数据，无法删除；</li>
+                    <li>配置编辑权限，可编辑具有查看权限的数据，无法新建、删除；</li>
+                    <li>配置删除权限，无法新建，可查看、编辑、删除所有数据；</li>
+                    <li>配置共享权限，可查看、编辑所有数据，无法新建、删除。</li>
+                </ul>
             </figure>
+
+            <p>单条流程 共享权限重构：</p>
+            <p><code>http://192.168.0.76:8066/workflowtransfer.jsp?workflowid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code></p>
 
             <div class="table-responsive">
                 <table class="table table-bordered table-striped responsive-utilities">
@@ -293,10 +304,51 @@
             </section>
             <!--end of #mobile-development-->
 
-            <section id="mathematics">
-                <h2><span class="fa fa-edit"></span> Mathematics</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
+            <section id="dbinfo">
+                <h2>数据库优化</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;随着时间的增长，数据库的大小也不断的增大，表的大小影响着DML语句的执行和web程序的响应时间。应该建立一套优化方案定期维护，保证数据库的大小在合理的范围。</p>
+                <section id="procedure">
+                    <h2>存储过程</h2>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;已定义的优化数据库表的存储过程说明</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <colgroup>
+                                <col class="col-xs-1">
+                                <col class="col-xs-7">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>存储过程名</th>
+                                <th>描述</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <code>P_Delete_notify_link(date:varchar2)</code>
+                                </th>
+                                <td>删除小于date的notify，notifyreceiverlink两张表的数据，定期清理这两张表，提高流程提醒的查询效率</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <code>P_Delete_log(date:varchar2)</code>
+                                </th>
+                                <td>删除小于date的log表的数据，定期清理这张表，提高查询效率</td>
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
                 <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
                 </p>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
