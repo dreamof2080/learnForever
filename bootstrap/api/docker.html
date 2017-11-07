@@ -5,7 +5,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>OA API</title>
+    <title>Docker</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel='stylesheet prefetch' href='http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style.css">
@@ -30,7 +30,11 @@
 
         <div class="col-md-3 scrollspy">
             <ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
-                <li><a href="#permissionSet">WHAT IS DOCKER</a>
+                <li><a href="#dockerinfo">WHAT IS DOCKER</a>
+                </li>
+                <li><a href="#installDocker">Install Docker</a>
+                </li>
+                <li><a href="#tomcat6image">Create Tomcat6 Image</a>
                 </li>
                 <li><a href="#web-development">Web Development</a>
                     <ul class="nav">
@@ -74,7 +78,7 @@
         </div>
 
         <div class="col-md-9">
-            <h2 id="permissionSet">什么是docker</h2>
+            <h2 id="dockerinfo">WHAT IS DOCKER</h2>
             <p>Docker 是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可以实现虚拟化，容器是完全使用沙箱机制，相互之间不会有任何接口。（From:百度百科）</p>
             <p>一个完整的Docker有以下几个部分组成：</p>
             <figure class="highlight">
@@ -85,6 +89,88 @@
                     <li>DockerContainer容器</li>
                 </ul>
             </figure>
+
+            <h2 id="installDocker">Install Docker</h2>
+            <p>CentOS下安装Docker</p>
+            <figure class="highlight">
+                <ul>
+                    <li>安装Docker：<p><code>> yum -y install docker-io</code></p></li>
+                    <li>启动Docker服务：<p><code>> service docker start</code></p></li>
+                    <li>将Docker加入开机启动:<p><code>> chkconfig docker on</code></p></li>
+                </ul>
+            </figure>
+
+            <h2 id="tomcat6image">Create Tomcat6 Image</h2>
+            <p>创建一个tomcat6+jdk1.6的镜像：</p>
+            <figure class="highlight">
+                <ul>
+                    <li>在/usr/local/下创建一个文件夹，作为创建docker image的临时文件夹：
+                        <p><code>> mkdir oadocker</code></p>
+                    </li>
+                    <li>
+                        <p>复制tomcat和jdk1.6.0_31到oadocker中(tomcat在/usr/local/下，jdk安装在/usr/java下):</p>
+                        <p><code>> cd /usr/local/ </code></p>
+                        <p><code>> cp -r tomcat /usr/local/oadocker/tomcat </code></p>
+                        <p><code>> cd /usr/java </code></p>
+                        <p><code>> cp -r jdk1.6.0_31 /usr/local/oadocker/jdk1.6.0_31 </code></p>
+                    </li>
+                    <li>编写Dockerfile文件
+                        <p><code>> cd /usr/local/oadocker </code></p>
+                        <p><code>> vim Dockerfile </code></p>
+                        <p><code>#使用的基础镜像</code></p>
+                        <p><code>FROM centos</code></p>
+
+                        <p><code>#作者信息</code></p>
+                        <p><code>MAINTAINER houpeng 1396996336@qq.com</code></p>
+
+                        <p><code>#创建目录</code></p>
+                        <p><code>RUN mkdir -p /oa/java/jdk1.6.0_31</code></p>
+
+                        <p><code>#把当前目录下的jdk文件夹添加到镜像中</code></p>
+                        <p><code>ADD jdk1.6.0_31 /oa/java/jdk1.6.0_31</code></p>
+
+                        <p><code>#创建tomcat目录</code></p>
+                        <p><code>RUN mkdir -p /oa/tomcat6</code></p>
+
+                        <p><code>#把当前目录下的tomcat文件夹添加到镜像中</code></p>
+                        <p><code>ADD tomcat /oa/tomcat6</code></p>
+
+                        <p><code>#添加jdk环境变量</code></p>
+                        <p><code>ENV JAVA_HOME /oa/java/jdk1.6.0_31</code></p>
+                        <p><code>ENV JRE_HOME $JAVA_HOME/jre</code></p>
+                        <p><code>ENV CLASSPATH .:$JAVA_HOME/lib:$JRE_HOME/lib</code></p>
+                        <p><code>ENV PATH $PATH:$JAVA_HOME/bin</code></p>
+
+                        <p><code>#配置tomcat的环境变量</code></p>
+                        <p><code>ENV CATALINA_HOME /oa/tomcat6</code></p>
+
+                        <p><code>#暴露8066端口，如果此镜像会启动多个容器，则可暴露多个端口</code></p>
+                        <p><code>EXPOSE 8066</code></p>
+                        <p><code>EXPOSE 8067</code></p>
+                        <p><code>EXPOSE 8068</code></p>
+                        <p><code>EXPOSE 8069</code></p>
+
+                        <p><code>#启动时运行tomcat</code></p>
+                        <p><code>CMD ["/oa/tomcat6/bin/catalina.sh","run"]</code></p>
+                    </li>
+                    <li>
+                        <p>创建镜像</p>
+                        <p><code>> docker build -t oa/tomcat6 --rm=true . </code></p>
+                    </li>
+                    <li>
+                        查看创建的镜像
+                        <p><code>> docker images oa/tomcat6 </code></p>
+                    </li>
+                    <li>
+                        运行镜像
+                        <p><code>端口映射为8066的容器：</code></p>
+                        <p><code>> docker run --name tomcat6_8066 -v /usr/local/tomcatconf/8066/conf/server.xml:/oa/tomcat6/conf/server.xml -v /usr/local/tomcatconf/8066/conf/context.xml:/usr/tomcat6/conf/context.xml -v /usr/local/tomcatconf/8066/logs:/oa/tomcat6/logs -v /usr/local/oawebapps:/oa/tomcat6/webapps  -d -p 8066:8066  9d26777cf52d  </code></p>
+                        <p><code>端口映射为8067的容器：</code></p>
+                        <p><code>> docker run --name tomcat6_8067 -v /usr/local/tomcatconf/8067/conf/server.xml:/oa/tomcat6/conf/server.xml -v /usr/local/tomcatconf/8067/conf/context.xml:/usr/tomcat6/conf/context.xml -v /usr/local/tomcatconf/8067/logs:/oa/tomcat6/logs -v /usr/local/oawebapps:/oa/tomcat6/webapps  -d -p 8067:8067  9d26777cf52d </code></p>
+                    </li>
+                </ul>
+            </figure>
+
 
             <p>单条流程 共享权限重构：</p>
             <p><code>http://192.168.0.76:8066/workflowtransfer.jsp?workflowid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code></p>
@@ -403,9 +489,9 @@
 </body>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 <script>
@@ -415,7 +501,7 @@
             bottom: $('footer').outerHeight(true) + $('.application').outerHeight(true) + 40
         }
     });
-    //@ sourceURL=pen.js
+
 </script>
 
 </body>
