@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>OA API</title>
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel='stylesheet prefetch' href='http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css'>
     <link rel="stylesheet" href="css/style.css">
 
@@ -18,11 +19,8 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Playing with Bootstrap</h1>
-        <h3><span class="fa fa-pencil"></span> Affix & Scrollspy plugins help you create nice scrolling effects.</h3>
-        <h3><span class="fa fa-pencil"></span> Minimal code is needed. Plugins take care of the rest.</h3>
-        <h3><span class="fa fa-pencil"></span> This demo will help you understand how to use them in your projects.</h3>
-        <a href="http://9iphp.com/?p=1349" class="btn btn-primary btn-lg">Learn More</a>
+        <h1>OA运维规范</h1>
+        <h3><span class="fa fa-pencil"></span>规范代码，避免错误.</h3>
     </div>
 </div>
 <!--end of .jumbotron-->
@@ -32,338 +30,253 @@
 
         <div class="col-md-3 scrollspy">
             <ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
-                <li><a href="#permissionSet">权限配置</a>
-                </li>
-                <li><a href="#web-development">Web Development</a>
+                <li><a href="#jsInfo">JS编写规范</a>
                     <ul class="nav">
-                        <li><a href="#ruby"><span class="fa fa-angle-double-right"></span>Ruby</a>
+                        <li><a href="#textInfo"><span class="fa fa-angle-double-right"></span>单行文本</a>
                         </li>
-                        <li><a href="#python"><span class="fa fa-angle-double-right"></span>Python</a>
+                        <li><a href="#selectInfo"><span class="fa fa-angle-double-right"></span>选择项</a>
                         </li>
-                        <li><a href="#php"><span class="fa fa-angle-double-right"></span>PHP</a>
+                        <li><a href="#browserInfo"><span class="fa fa-angle-double-right"></span>关联选择</a>
+                        </li>
+                        <li><a href="#textareaInfo"><span class="fa fa-angle-double-right"></span>多行文本</a>
+                        </li>
+                        <li><a href="#attachInfo"><span class="fa fa-angle-double-right"></span>附件</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="#marketing">Marketing</a>
+                <li><a href="#interfaceInfo">接口编写规范</a></li>
+                <li><a href="#linuxInfo">Linux常用命令</a></li>
+                <li><a href="#permissionSet">权限配置规范</a>
                 </li>
-                <li><a href="#graphic-design">Graphic Design</a>
-                </li>
-                <li><a href="#logistics">Logistics</a>
-                </li>
-                <li><a href="#social">Social</a>
-                </li>
-                <li><a href="#management">Management</a>
-                </li>
-                <li><a href="#chemistry">Chemistry</a>
-                </li>
-                <li><a href="#mobile-development">Mobile Development</a>
-                    <ul class="nav">
-                        <li><a href="#android"><span class="fa fa-angle-double-right"></span>Android</a>
-                        </li>
-                        <li><a href="#iOS"><span class="fa fa-angle-double-right"></span>iOS</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="#dbinfo">数据库优化</a>
-                    <ul class="nav">
-                        <li><a href="#procedure"><span class="fa fa-angle-double-right"></span>存储过程</a>
-                        </li>
-                        <li><a href="#"><span class="fa fa-angle-double-right"></span>表</a>
-                        </li>
-                    </ul>
+                <li><a href="#dbInfo">数据库操作规范</a></li>
+                <ul class="nav">
+                    <li><a href="#procedure"><span class="fa fa-angle-double-right"></span>数据库优化</a>
+                    </li>
+                </ul>
                 </li>
             </ul>
         </div>
 
         <div class="col-md-9">
-            <h2 id="permissionSet">权限配置说明</h2>
-            <p>权限分为：查看、新建、编辑、删除、共享，权限之间存在包含的关系。给分类或流程每配置一条权限规则则生成分类数据或权限数据时就多了一份权限数据（这一份权限数据根据规则的不同生成的数量也不同，若选择了某个部门，权限数据量为部门所有员工之和）</p>
-            <figure class="highlight">
-                <ul>
-                    <li>配置新建权限，可以查看和编辑自己新建的数据，无法删除；</li>
-                    <li>配置编辑权限，可编辑具有查看权限的数据，无法新建、删除；</li>
-                    <li>配置删除权限，无法新建，可查看、编辑、删除所有数据；</li>
-                    <li>配置共享权限，可查看、编辑所有数据，无法新建、删除。</li>
-                </ul>
-            </figure>
+            <section id="jsInfo">
+                <h2>JS编写规范</h2>
+                <p>规范表单中的JS书写规范，避免不同浏览器间的兼容性问题</p>
+                <h3 id="textInfo">单行文本</h3>
+                <p>单行文本包括文本、整数、浮点数、日期、时间、日期时间，不同类型的单行文本有自己独特的一些属性和对应的JS操作</p>
 
-            <p>单条流程 共享权限重构：</p>
-            <p><code>http://192.168.0.76:8066/workflowtransfer.jsp?workflowid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code></p>
+                <p><strong>单行文本改变后触发某个方法：</strong></p>
+                <p><code>WeaverUtil.watch(document.getElementById('fieldId'),functionName);</code></p>
 
-            <div class="table-responsive">
-                <table class="table table-bordered table-striped responsive-utilities">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>
-                            查看
-                        </th>
-                        <th>
-                            新建
-                        </th>
-                        <th>
-                            编辑
-                        </th>
-                        <th>
-                            删除
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">查看</th>
-                        <td class="is-visible">ALL</td>
-                        <td class="is-hidden">×</td>
-                        <td class="is-hidden">×</td>
-                        <td class="is-hidden">×</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">新建</th>
-                        <td class="is-visible">SELF</td>
-                        <td class="is-visible">√</td>
-                        <td class="is-visible">SELF</td>
-                        <td class="is-hidden">×</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">编辑</th>
-                        <td class="is-hidden">×</td>
-                        <td class="is-hidden">×</td>
-                        <td class="is-visible">可见</td>
-                        <td class="is-hidden">隐藏</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">删除</th>
-                        <td class="is-hidden">隐藏</td>
-                        <td class="is-hidden">隐藏</td>
-                        <td class="is-hidden">隐藏</td>
-                        <td class="is-visible">可见</td>
-                    </tr>
-                    </tbody>
-                    <tbody>
-                    <tr>
-                        <th scope="row">共享</th>
-                        <td class="is-hidden">隐藏</td>
-                        <td class="is-visible">可见</td>
-                        <td class="is-visible">可见</td>
-                        <td class="is-visible">可见</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+                <p><strong>控制必填：</strong></p>
+                <p><code>setNeedCheck('fieldId',flag);</code></p>
+                <p>flag为true表示必填，false表示不必填</p>
+
+                <p><strong>单行文本赋值：</strong></p>
+                <div class="bs-callout bs-callout-info">
+                    <p>可编辑状态下单行文本赋值：</p>
+                    <p>原生方式：<code>document.getElementById('fieldId').value = 'value';</code></p>
+                    <p>jQuery方式：<code>jQuery('#fieldId').val('value');</code></p>
+                    <p>只读状态下单行文本赋值：</p>
+                    <p>原生方式：<p><code>document.getElementById('fieldId').value='value';</code></p><p><code>document.getElementById('fieldId').innerHTML='value';</code></p></p>
+                    <p>jQuery方式：<p><code>jQuery('#fieldId').val('value');</code></p><p><code>jQuery('#fieldId').text('value')</code></p></p>
+                </div>
+                <p><strong>获取单行文本的值：</strong></p>
+                <div class="bs-callout bs-callout-info">
+                    <p>可编辑状态下获取单行文本的值：</p>
+                    <p>原生方式：<code>document.getElementById('fieldId').value</code></p>
+                    <p>jQuery方式：<code>jQuery('#fieldId').val()</code></p>
+                    <p>只读状态下获取单行文本的值：</p>
+                    <p>原生方式：<code>document.getElementById('fieldId').innerHTML</code></p>
+                    <p>jQuery方式：<code>jQuery('#fieldId').text()</code></p>
+                </div>
+                <p><strong>可编辑状态下控制单行文本只读</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><p>1、通过调用setInputReadOnly()方法设置只读：</p><span class="nt">function setInputReadOnly(fieldid){
+    var obj = document.getElementById(fieldid);
+    obj.style.display = 'none';
+    var span = document.createElement('&lt;span&gt;');
+    span.innerHTML = obj.value;
+    obj.parentNode.appendChild(span);
+}</span><p>2、通过jQuery方式：</p><span class="nt">jQuery('#fieldId').attr('readonly','readonly');
+jQuery('#fieldId_span').remove();</span></code></pre></figure>
+
+                <p>单行文本为日期字段时需转换日期时间格式为：'2012/12/12 08:01:01' 此格式支持所有浏览器，解决浏览器兼容问题：</p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">function dateFormatChange(DateOne){
+	var reg = new RegExp('-','g');
+	var DateOne = DateOne.replace(reg,'/');
+    return DateOne;
+}</span></code></pre></figure>
+
+                <p><strong>日期跨年跨月判断：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">function monthJudge(){
+	var beginDay = document.getElementById('field_297e55a647ed14950147ed3565b60002').value;
+	var endDay = document.getElementById('field_297e55a647ed14950147ed3566c10004').value;
+	if (beginDay && endDay)
+	{
+		var begin = new Date(Date.parse(dateFormatChange(beginDay)));
+		var end = new Date(Date.parse(dateFormatChange(endDay)));
+		if (begin.getFullYear()!=end.getFullYear())
+		{
+			alert('请不要跨年！');
+			document.getElementById('field_297e55a647ed14950147ed3566c10004').value = '';
+			return;
+		}
+		if ((begin.getFullYear()==end.getFullYear()) && (begin.getMonth()!=end.getMonth()))
+		{
+			alert('请不要跨月');
+			document.getElementById('field_297e55a647ed14950147ed3566c10004').value = '';
+			return;
+		}
+	}
+
+}</span></code></pre></figure>
+
+                <p><strong>双休日判断：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">function getXinQi(obj){
+    var objvalue = obj.value;
+    if (objvalue)
+    {
+        var theday = new Date(Date.parse(dateFormatChange(objvalue)));
+		var xinqi = theday.getDay();
+        if (xinqi && xinqi!=0 && xinqi!=6)
+        {
+            alert('不是双休日！');
+            obj.value = '';
+            return;
+        }
+    }
+} </span></code></pre></figure>
+
+                <p><strong>比较两个日期的大小：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">function getDiff(beginDate,endDate){
+	var endDate = dateFormatChange(endDate);
+	var beginDate = dateFormatChange(beginDate);
+	var cha = Date.parse(endDate)-Date.parse(beginDate);
+    if (cha>=0){
+          return true;
+    }else{
+          return false;
+    }
+} </span></code></pre></figure>
+
+                <p><strong>获取当前日期、年、月、日等：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">var myDate = new Date();
+myDate.getYear();        //获取当前年份(2位)
+myDate.getFullYear();    //获取完整的年份(4位,1970-????)
+myDate.getMonth();       //获取当前月份(0-11,0代表1月)
+myDate.getDate();        //获取当前日(1-31)
+myDate.getDay();         //获取当前星期X(0-6,0代表星期天)
+myDate.getTime();        //获取当前时间(从1970.1.1开始的毫秒数)
+myDate.getHours();       //获取当前小时数(0-23)
+myDate.getMinutes();     //获取当前分钟数(0-59)
+myDate.getSeconds();     //获取当前秒数(0-59)
+myDate.getMilliseconds();    //获取当前毫秒数(0-999)
+myDate.toLocaleDateString();     //获取当前日期
+var mytime=myDate.toLocaleTimeString();     //获取当前时间
+myDate.toLocaleString( );        //获取日期与时间</span></code></pre></figure>
+
+                <p><strong>日期时间控件官方网页：</strong></p>
+                <p><a href="http://www.my97.net/dp/demo/index.htm">http://www.my97.net/dp/demo/index.htm</a></p>
 
 
-            <section id="web-development">
-                <h2><span class="fa fa-edit"></span> Web Development</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
+                <h3 id="selectInfo">选择项</h3>
+                <p><strong>获取选择项选择的值：</strong></p>
+                <p><code>var item = document.getElementById('fieldid');</code></p>
+                <p><code>item.options[item.selectedIndex].value;</code></p>
 
-                <section id="ruby">
-                    <h3>Ruby</h3>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </section>
-                <!--end of #ruby-->
+                <p><strong>给选择项设置只读：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">function setSelectReadOnly(fieldid){
+    var obj = document.getElementById(fieldid);
+    obj.style.display = 'none';
+    var span = document.createElement('&lt;span&gt;');
+    var objvalue = obj.options[obj.selectedIndex].text;
+    span.innerHTML = objvalue;
+    obj.parentNode.appendChild(span);
+} </span></code></pre></figure>
 
-                <section id="python">
-                    <h3>Python</h3>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </section>
-                <!--end of #python-->
+                <h3 id="browserInfo">关联选择</h3>
 
-                <section id="php">
-                    <h3>PHP</h3>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </section>
-                <!--end of #php-->
+                <h3 id="textareaInfo">多行文本</h3>
+
+                <h3 id="attachInfo">附件</h3>
             </section>
-            <!--end of #web-devlopment-->
 
-            <section id="marketing">
-                <h2><span class="fa fa-edit"></span> Marketing</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                </p>
-                <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
+            <section id="interfaceInfo">
+                <h2>接口编写规范</h2>
+                <p>规范流程接口的书写规范</p>
             </section>
-            <!--end of #marketing-->
 
-            <section id="graphic-design">
-                <h2><span class="fa fa-edit"></span> Graphic Design</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
+            <section id="linuxInfo">
+                <h2>Linux常用命令介绍</h2>
+                <p>掌握Linux常用命令，能进行日常的维护</p>
             </section>
-            <!--end of #graphic-design-->
 
-            <section id="logistics">
-                <h2><span class="fa fa-edit"></span> Logistics</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+            <section id="permissionSet">
+                <h2>权限配置说明</h2>
+                <p>
+                    权限分为：查看、新建、编辑、删除、共享，权限之间存在包含的关系。给分类或流程每配置一条权限规则则生成分类数据或权限数据时就多了一份权限数据（这一份权限数据根据规则的不同生成的数量也不同，若选择了某个部门，权限数据量为部门所有员工之和）</p>
+                <figure class="highlight">
+                    <ul>
+                        <li>配置新建权限，可以查看和编辑自己新建的数据，无法删除；</li>
+                        <li>配置编辑权限，可编辑具有查看权限的数据，无法新建、删除；</li>
+                        <li>配置删除权限，无法新建，可查看、编辑、删除所有数据；</li>
+                        <li>配置共享权限，可查看、编辑所有数据，无法新建、删除。</li>
+                    </ul>
+                </figure>
+
+                <p>单条流程 共享权限重构：</p>
+                <p><code>http://192.168.0.76:8066/workflowtransfer.jsp?workflowid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code>
                 </p>
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
+
             </section>
-            <!--end of #logistics-->
 
-            <section id="social">
-                <h2><span class="fa fa-edit"></span> Social</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                </p>
-                <p>Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
+
+            <section id="dbInfo">
+                <h2>数据库操作规范</h2>
+                <p>数据库日常操作的规范，掌握常用的CRUD操作</p>
+
+                <h2 id="procedure">数据库优化</h2>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;已定义的优化数据库表的存储过程说明</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <colgroup>
+                            <col class="col-xs-1">
+                            <col class="col-xs-7">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>存储过程名</th>
+                            <th>描述</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">
+                                <code>P_Delete_notify_link(date:varchar2)</code>
+                            </th>
+                            <td>删除小于date的notify，notifyreceiverlink两张表的数据，定期清理这两张表，提高流程提醒的查询效率</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <code>P_Delete_log(date:varchar2)</code>
+                            </th>
+                            <td>删除小于date的log表的数据，定期清理这张表，提高查询效率</td>
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        <tr>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
-            <!--end of #social-->
 
-            <section id="management">
-                <h2><span class="fa fa-edit"></span> Management</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
-            </section>
-            <!--end of #management-->
+            <section>
 
-            <section id="chemistry">
-                <h2><span class="fa fa-edit"></span> Chemistry</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
-            </section>
-            <!--end of #chemistry-->
-
-            <section id="mobile-development">
-                <h2><span class="fa fa-edit"></span> Mobile Development</h2>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-                </p>
-
-                <section id="android">
-                    <h3>Android Development</h3>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </section>
-                <!--end of #android-->
-
-                <section id="iOS">
-                    <h3>iOS Development</h3>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                    </p>
-                    <button type="button" class="btn btn-primary">Learn More</button>
-                </section>
-                <!--end of #iOS-->
-            </section>
-            <!--end of #mobile-development-->
-
-            <section id="dbinfo">
-                <h2>数据库优化</h2>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;随着时间的增长，数据库的大小也不断的增大，表的大小影响着DML语句的执行和web程序的响应时间。应该建立一套优化方案定期维护，保证数据库的大小在合理的范围。</p>
-                <section id="procedure">
-                    <h2>存储过程</h2>
-                    <p>&nbsp;&nbsp;&nbsp;&nbsp;已定义的优化数据库表的存储过程说明</p>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped">
-                            <colgroup>
-                                <col class="col-xs-1">
-                                <col class="col-xs-7">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th>存储过程名</th>
-                                <th>描述</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <code>P_Delete_notify_link(date:varchar2)</code>
-                                </th>
-                                <td>删除小于date的notify，notifyreceiverlink两张表的数据，定期清理这两张表，提高流程提醒的查询效率</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">
-                                    <code>P_Delete_log(date:varchar2)</code>
-                                </th>
-                                <td>删除小于date的log表的数据，定期清理这张表，提高查询效率</td>
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            <tr>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <p>Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
-                </p>
-                <button type="button" class="btn btn-primary">Learn More</button>
             </section>
             <!--end of #mathematics-->
         </div>
@@ -378,16 +291,23 @@
         <h2>Come and Join Us</h2>
         <div class="row">
             <div class="col-sm-6">
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
+                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+                    quis ante.
                 </p>
                 <img class="img-responsive  " src="http://placehold.it/500x250/5fb3ce/000000">
             </div>
             <div class="col-sm-6">
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+                    quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet
+                    nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
                 </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+                    quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet
+                    nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
                 </p>
-                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
+                <p>Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam
+                    quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet
+                    nibh. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem.
                 </p>
                 <button type="button" class="btn btn-primary">Apply Now</button>
             </div>
@@ -398,15 +318,22 @@
 </section>
 
 <footer>
-    <p class="text-center">A demo by George Martsoukos. <a href="http://www.sitepoint.com/understanding-bootstraps-affix-scrollspy-plugins">See article.</a>
+    <p class="text-center">A demo by George Martsoukos. <a
+            href="http://www.sitepoint.com/understanding-bootstraps-affix-scrollspy-plugins">See article.</a>
     </p>
 </footer>
 </body>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
 
 <script>
