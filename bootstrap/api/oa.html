@@ -30,7 +30,7 @@
 
         <div class="col-md-3 scrollspy">
             <ul id="nav" class="nav hidden-xs hidden-sm" data-spy="affix">
-                <li><a href="#jsInfo">JS编写规范</a>
+                <li><a href="#jsInfo">常用JS</a>
                     <ul class="nav">
                         <li><a href="#textInfo"><span class="fa fa-angle-double-right"></span>单行文本</a>
                         </li>
@@ -48,18 +48,28 @@
                 <li><a href="#linuxInfo">Linux常用命令</a></li>
                 <li><a href="#permissionSet">权限配置规范</a>
                 </li>
-                <li><a href="#dbInfo">数据库操作规范</a></li>
-                <ul class="nav">
-                    <li><a href="#procedure"><span class="fa fa-angle-double-right"></span>数据库优化</a>
-                    </li>
-                </ul>
+                <li><a href="#dbInfo">数据库操作规范</a>
+                    <ul class="nav">
+                        <li><a href="#offtenSql"><span class="fa fa-angle-double-right"></span>常用SQL</a>
+                        </li>
+                        <li><a href="#procedure"><span class="fa fa-angle-double-right"></span>数据库优化</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#tableInfo">系统表说明</a>
+                    <ul class="nav">
+                        <li><a href="#selectItemTable"><span class="fa fa-angle-double-right"></span>下拉框</a>
+                        </li>
+                        <li><a href="#browserTable"><span class="fa fa-angle-double-right"></span>关联选择</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
 
         <div class="col-md-9">
             <section id="jsInfo">
-                <h2>JS编写规范</h2>
+                <h2>常用JS</h2>
                 <p>规范表单中的JS书写规范，避免不同浏览器间的兼容性问题</p>
                 <h3 id="textInfo">单行文本</h3>
                 <p>单行文本包括文本、整数、浮点数、日期、时间、日期时间，不同类型的单行文本有自己独特的一些属性和对应的JS操作</p>
@@ -194,20 +204,212 @@ myDate.toLocaleString( );        //获取日期与时间</span></code></
 } </span></code></pre></figure>
 
                 <h3 id="browserInfo">关联选择</h3>
+                <p><strong>关联选择变更触发事件：</strong></p>
+                <p><code>WeaverUtil.watch(document.getElementById('fieldId'),functionName);</code></p>
+                <p><strong>更改browser的数据源：（如下以表单中的联系人字段做例子）</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">WeaverUtil.load(function(){
+   document.getElementById('button_ff8080813ad5dc57013ad8bab0ff04ed').onclick=function(){refmodify();}//联系人
+
+});
+function refmodify(){
+     var param = 'sqlwhere=1=1';
+     var f1=document.getElementById('field_ff8080813ad5dc57013ad8bab08704e5');//客户
+     if(f1.value!=''&& f1.value!=null && f1.value!='null'){
+        param += ' and khmc=\''+f1.value+'\'';
+     }
+     getrefobj('field_ff8080813ad5dc57013ad8bab0ff04ed','field_ff8080813ad5dc57013ad8bab0ff04edspan','ff8080813ad5dc57013ad8deed82095a',param,'','0');
+     //参数说明：联系人的fieldID，联系人fieldspan,browser框的ID,过滤条件,显示URL，是否必填
+} </span></code></pre></figure>
 
                 <h3 id="textareaInfo">多行文本</h3>
+                <p><strong>多行文本在编辑时如果有数据的情况下自适应高度：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">WeaverUtil.load(function(){
+	setTextarea();
+});
+function setTextarea(){
+	var textarea = document.getElementById('field_40288067343ba12901343bf1eace067b');
+	var height = textarea.scrollHeight;
+	textarea.style.height = height+"px";
+}</span></code></pre></figure>
 
                 <h3 id="attachInfo">附件</h3>
+                <p><strong>附件在编辑状态下给附件设置只读：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">//附件只读
+function setAttachReadOnly(fieldid){
+	var obj = document.getElementById(fieldid);
+	var objvalue = obj.value;
+	var theparent = obj.parentNode;//获取父节点
+	var childs=theparent.childNodes; //获取所有子节点
+	for(var i=childs.length-1;i>=1;i--){//删除 除第一个&lt;input&gt;之外的所有子节点
+		theparent.removeChild(childs.item(i));
+	}
+	DWREngine.setAsync(false);
+	var arys = new Array();
+	arys = objvalue.split(',');
+	for(var i=0;i&lt;arys.length;i++){
+		var sql='select objname from attach where id=\''+arys[i]+'\''; //查询附件的名称
+		DataService.getValues(sql,{
+			callback:function(data){
+				if(data && data.length>0)
+				{
+					//alert(data[0].OBJNAME);
+					var newNote = document.createElement('&lt;a&gt;');//创建&lt;a&gt;节点
+					newNote.href = '/ServiceAction/com.eweaver.document.file.FileDownload?attachid='+arys[i]+'&isdownload=1&nIndex=1';
+					newNote.innerHTML = data[0].OBJNAME;
+					theparent.appendChild(newNote);//增加子节点
+					theparent.appendChild(document.createElement('&lt;br&gt;'));
+				}
+			}
+		});
+	}
+	DWREngine.setAsync(true);
+}
+</span></code></pre></figure>
+
+                <p><strong>带出附件的值：</strong></p>
+                <figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">WeaverUtil.load(function(){
+	addDiv(document.getElementById('field_1128813645d40a5f0145d495f6534111').value,'2828813645d40a5f0145d495f6534d85');
+});
+
+
+function addDiv(objvalue,fid){
+	var attach = objvalue;
+	var arys = new Array();
+	if(attach.length>32){
+		arys = attach.split(',');
+	}else arys[0] = attach;
+	var fdiv = document.getElementById('filelist_'+fid);
+	fdiv.style.display = '';
+	while(fdiv.hasChildNodes()){//当div下还存在子节点时 循环继续
+		fdiv.removeChild(fdiv.firstChild);
+	}
+	for(var i=0;i&lt;arys.length;i++){
+		var attachname = SQL('select objname from attach where id=\''+attach+'\'');
+		var newdiv = document.createElement('div');
+		newdiv.id=arys[i];
+		fdiv.appendChild(newdiv);
+		newdiv.innerHTML = attachname;
+		var a = document.createElement('a');
+		a.id='img_'+arys[i];
+		a.href = 'javascript:deltheAttach(\'2828813645d40a5f0145d495f6534d85\',\''+arys[i]+'\')';
+		newdiv.appendChild(a);
+		var img = document.createElement('img');
+		img.width='23';
+		img.height='22';
+		img.className ='addfile';
+		img.src='/images/base/delete.GIF';
+		a.appendChild(img);
+	}
+}
+
+function deltheAttach(id1,id2){
+    var fdiv = document.getElementById('filelist_'+id1);
+    var subdiv = document.getElementById(id2);
+    fdiv.removeChild(subdiv);
+    var objvalue = document.getElementById('field_'+id1).value;
+    if(objvalue.indexOf(id2)>-1){
+        objvalue = objvalue.replace(id2,'');
+    }
+    var reg = new RegExp(',,','g');
+    objvalue = objvalue.replace(reg,',');
+    document.getElementById('field_'+id1).value = objvalue;
+}
+
+</span></code></pre></figure>
             </section>
 
             <section id="interfaceInfo">
                 <h2>接口编写规范</h2>
                 <p>规范流程接口的书写规范</p>
+                <figure class="highlight">
+                    <ul>
+                        <li>进行List循环时先判断List是否为空:<code>if(tmpList!=null && tmpList.size()&gt;0)</code>；</li>
+                        <li>循环给某个String赋值用StringBuffer代替String，用StringBuffer的append()方法组装数据；</li>
+                        <li>更新同一个表的SQL操作能合并成一条语句尽量合并成一条；</li>
+                        <li>数据库操作尽量采用baseJdbcDao.getJdbcTemplate()模式：
+                            <p>更新：</p>
+                            <p><code>BaseJdbcDao baseJdbcDao = (BaseJdbcDao) BaseContext.getBean("baseJdbcDao");</code></p>
+                            <p><code>String upsql = "update humres set objname=? where id=?";</code></p>
+                            <p><code>baseJdbcDao.getJdbcTemplate().update(upsql,new Object[]{"张三","ff8080815f6b2c0d015f759a2c3e4bfc"});</code></p>
+                            <p>读取数据：</p>
+                            <p><code>String sql = "select id from humres where seclevel>?";</code></p>
+                            <p><code>List userList = baseJdbcDao.getJdbcTemplate().queryForList(sql,new Object[]{20});</code></p>
+                        </li>
+                    </ul>
+                </figure>
+
+                <p>本地数据库操作</p>
+                <figure class="highlight">
+                    <code>BaseJdbcDao baseJdbcDao = (BaseJdbcDao) BaseContext.getBean("baseJdbcDao");</code>
+                </figure>
+
+                <p>EAS数据库操作(192.168.0.233)</p>
+                <figure class="highlight">
+                    <code>BaseJdbcDao easBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("easBaseJdbcDao");</code>
+                </figure>
+
+                <p>WX数据库操作(192.168.7.75)</p>
+                <figure class="highlight">
+                    <code>BaseJdbcDao wxBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("wxBaseJdbcDao");</code>
+                </figure>
+
+                <p>需要的jar包：</p>
+                <p><code>com.eweaver.base.BaseContext</code></p>
+                <p><code>com.eweaver.base.BaseJdbcDao</code></p>
+
             </section>
 
             <section id="linuxInfo">
                 <h2>Linux常用命令介绍</h2>
                 <p>掌握Linux常用命令，能进行日常的维护</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th>说明</th>
+                            <th>命令</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>复制文件夹</td>
+                            <td><code>cp -r tomcat tomcat_bak_0928</code></td>
+                        </tr>
+                        <tr>
+                            <td>修改HostName</td>
+                            <td><code>vim /etc/hosts</code></td>
+                        </tr>
+                        <tr>
+                            <td>压缩文件夹</td>
+                            <td><code>tar -zcvf tomcat.tar.gz tomcat</code></td>
+                        </tr>
+                        <tr>
+                            <td>解压缩</td>
+                            <td><code>tar -zxvf tomcat.tar.gz</code></td>
+                        </tr>
+                        <tr>
+                            <td>删除tmp文件夹，谨慎操作</td>
+                            <td><code>rm -rf /usr/local/tomcat/tmp</code></td>
+                        </tr>
+                        <tr>
+                            <td>查看tomcat相关进程</td>
+                            <td><code>ps -ef |grep tomcat</code></td>
+                        </tr>
+                        <tr>
+                            <td>结束进程id为522的进程</td>
+                            <td><code>kill -9 522</code></td>
+                        </tr>
+                        <tr>
+                            <td>给文件赋权</td>
+                            <td><code>chmod 777 ***.txt</code></td>
+                        </tr>
+                        <tr>
+                            <td>给文件夹赋权</td>
+                            <td><code>Chmod -R 777 Bin/</code></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section id="permissionSet">
@@ -227,12 +429,74 @@ myDate.toLocaleString( );        //获取日期与时间</span></code></
                 <p><code>http://192.168.0.76:8066/workflowtransfer.jsp?workflowid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code>
                 </p>
 
+                <p>单条分类 某个权限设置权限重构：</p>
+                <p><code>http://192.168.0.76:8066/categorytransfer.jsp?isdocbase=0&categoryid=40288067343ba1290134409c1ea12253&ruleid=ff8080815f6b2c0d015f759a2c3e4bfc&requestid=402880ce5f46148a015f4827011f50c7</code>
+                </p>
+
+                <p>单条分类 权限重构：</p>
+                <p><code>http://192.168.0.76:8066/categorytransfer.jsp?isdocbase=0&categoryid=40288067343ba1290134409c1ea12253&requestid=402880ce5f46148a015f4827011f50c7</code>
+                </p>
+
             </section>
 
 
             <section id="dbInfo">
                 <h2>数据库操作规范</h2>
                 <p>数据库日常操作的规范，掌握常用的CRUD操作</p>
+                <p><strong class="text-danger">重要提示：更新表数据时请使用update语句进行更新，千万不要用select for update的形式进行更新，因为for update会锁住整张表，导致正常的业务只能等待，一旦忘记解锁将导致系统崩溃。</strong></p>
+                <h2 id="offtenSql">常用SQL</h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+                        <colgroup>
+                            <col class="col-xs-6">
+                            <col class="col-xs-2">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>说明</th>
+                            <th>命令</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>查找某个部门下的所有员工(包括兼岗)</td>
+                            <td><code>select * from humres where exists(select * from (select oid from orgunitlink start with  oid='8a80898550caa8720150f5a530ab259f'  connect by prior oid=pid ) t where instr(humres.orgids,oid)>0)</code></td>
+
+                        </tr>
+                        <tr>
+                            <td>查询部门的所有下属部门</td>
+                            <td><code>SELECT * FROM (SELECT a.id,a.objname,b.pid FROM ORGUNIT a,ORGUNITLINK b WHERE a.ID=b.OID) orgu
+                                START WITH orgu.id='402883253280f3db01328113735c0002' CONNECT BY PRIOR ORGU.id=orgu.pid</code></td>
+
+                        </tr>
+                        <tr>
+                            <td>查询组织下的所有岗位</td>
+                            <td><code>select a.id,a.objname from stationinfo a where exists (select id from (SELECT id FROM (SELECT a.id,a.objname,b.pid FROM ORGUNIT a,ORGUNITLINK b WHERE a.ID=b.OID and a.isdelete=0 and a.unitstatus='402880d31a04dfba011a04e4db5f0003') orgu START WITH orgu.id='402888fa37a05d2c0137a07cc5820003' CONNECT BY PRIOR ORGU.id=orgu.pid) b where a.orgid=b.id) and a.STATIONSTATUS='402880d319eb81720119eba4e1e70004' and a.isdelete=0</code></td>
+
+                        </tr>
+                        <tr>
+                            <td>查找组织的所有上级组织</td>
+                            <td><code>select id,objname,pid from (SELECT CONNECT_by_root orgt.objname,orgt.* FROM (SELECT a.id,a.objname,b.pid FROM ORGUNIT a,ORGUNITLINK b WHERE a.ID=b.OID) orgt START WITH orgt.ID='402864d249796b880149796d236c00fb' CONNECT BY PRIOR orgt.pid=orgt.id) order by rownum desc</code></td>
+                        </tr>
+                        <tr>
+                            <td>ORACLE中生成32位ID</td>
+                            <td><code>select  sys_guid() from dual</code></td>
+                        </tr>
+                        <tr>
+                            <td>当前节点</td>
+                            <td><code>select b.objname as 当前节点 from REQUESTINFO a,nodeinfo b where a.CURRENTNODEID=b.id and a.requestid={requestid}</code></td>
+                        </tr>
+                        <tr>
+                            <td>当前审批人</td>
+                            <td><code>select wmsys.wm_concat(a.objname) as 当前审批人 from humres a,REQUESTOPERATORS rs where a.id=rs.userid and rs.requestid={requestid}</code></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><code></code></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2 id="procedure">数据库优化</h2>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;已定义的优化数据库表的存储过程说明</p>
@@ -275,8 +539,8 @@ myDate.toLocaleString( );        //获取日期与时间</span></code></
                 </div>
             </section>
 
-            <section>
-
+            <section id="tableInfo">
+                <h2>系统表结构说明</h2>
             </section>
             <!--end of #mathematics-->
         </div>
@@ -287,7 +551,7 @@ myDate.toLocaleString( );        //获取日期与时间</span></code></
 <!--end of .container-->
 
 <footer>
-    <p class="text-center">@Author Jeffrey,@Email:906956368@qq.com
+    <p class="text-center">@Author Jeffrey.Liu &nbsp;@Email:906956368@qq.com
     </p>
 </footer>
 </body>
