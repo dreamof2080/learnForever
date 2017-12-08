@@ -44,7 +44,14 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#interfaceInfo">接口编写规范</a></li>
+                <li><a href="#interfaceInfo">接口编写规范</a>
+                    <ul class="nav">
+                        <li><a href="#localDataInterface"><span class="fa fa-angle-double-right"></span>数据库操作</a>
+                        </li>
+                        <li><a href="#mailInterface"><span class="fa fa-angle-double-right"></span>邮件发送</a>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="#linuxInfo">Linux常用命令</a></li>
                 <li><a href="#permissionSet">权限配置规范</a>
                 </li>
@@ -340,24 +347,46 @@ function deltheAttach(id1,id2){
                     </ul>
                 </figure>
 
-                <p>本地数据库操作</p>
+                <p id="localDataInterface">本地数据库操作</p>
                 <figure class="highlight">
-                    <code>BaseJdbcDao baseJdbcDao = (BaseJdbcDao) BaseContext.getBean("baseJdbcDao");</code>
+                    <p><code>import com.eweaver.base.BaseContext</code></p>
+                    <p><code>import com.eweaver.base.BaseJdbcDao</code></p>
+                    <p><code>BaseJdbcDao baseJdbcDao = (BaseJdbcDao) BaseContext.getBean("baseJdbcDao");</code></p>
                 </figure>
 
                 <p>EAS数据库操作(192.168.0.233)</p>
                 <figure class="highlight">
-                    <code>BaseJdbcDao easBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("easBaseJdbcDao");</code>
+                    <p><code>import com.eweaver.base.BaseContext</code></p>
+                    <p><code>import com.eweaver.base.BaseJdbcDao</code></p>
+                    <p><code>BaseJdbcDao easBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("easBaseJdbcDao");</code></p>
                 </figure>
 
                 <p>WX数据库操作(192.168.7.75)</p>
                 <figure class="highlight">
-                    <code>BaseJdbcDao wxBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("wxBaseJdbcDao");</code>
+                    <p><code>import com.eweaver.base.BaseContext</code></p>
+                    <p><code>import com.eweaver.base.BaseJdbcDao</code></p>
+                    <p><code>BaseJdbcDao wxBaseJdbcDao = (BaseJdbcDao)BaseContext.getBean("wxBaseJdbcDao");</code></p>
                 </figure>
 
-                <p>需要的jar包：</p>
-                <p><code>com.eweaver.base.BaseContext</code></p>
-                <p><code>com.eweaver.base.BaseJdbcDao</code></p>
+                <p id="mailInterface">邮件发送</p>
+                <figure class="highlight">
+                    <p><small>需要导入的包：</small></p>
+                    <p><code>import com.eweaver.base.BaseContext;</code></p>
+                    <p><code>import com.eweaver.base.msg.EweaverMessage;</code></p>
+                    <p><code>import com.eweaver.base.msg.EweaverMessageProducer;</code></p>
+                    <p><small>代码内容：</small></p>
+                    <p><code>EweaverMessageProducer eweaverMessageProducer =(EweaverMessageProducer)BaseContext.getBean("eweaverMessageProducer");</code></p>
+                    <p><small>/** 收件人的humresId **/</small></p>
+                    <p><code>String userid = "";</code></p>
+                    <p><small>/** 邮件标题 **/</small></p>
+                    <p><code>String title = "";</code></p>
+                    <p><small>/** 邮件内容 **/</small></p>
+                    <p><code>String msg = "";</code></p>
+                    <p><small>/** 发送邮件接口代码，固定写法，无需修改 **/</small></p>
+                    <p><code>EweaverMessage msgobj = new EweaverMessage(EweaverMessage.MESSAGE_TYPE_EMAIL, "", userid, msg);</code></p>
+                    <p><code>msgobj.setMsgtitle(title);</code></p>
+                    <p><code>eweaverMessageProducer.send(msgobj);</code></p>
+                </figure>
 
             </section>
 
