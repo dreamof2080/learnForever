@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .div2{
+            width: 200px;
+            height: 300px;
+            background-color: #4b7bff;
+            position: absolute;
+            left: 20px;
+            top: 200px;
+        }
+        .item{
+            position: relative;
+            width:200px;
+            height:20px;
+            margin-bottom: 5px;
+            background-color:red;
+        }
+        .itemMove{
+            position: absolute;
+            width:200px;
+            height:20px;
+            background-color: #caff84;
+            display: none;
+            z-index: 100;
+        }
+        iframe{
+            width:300px;
+            height:500px;
+            position: relative;
+            top:200px;
+            left:300px;
+            z-index: -1;
+        }
+    </style>
+    <script>
+        //全局变量，标记是否鼠标按下
+        var isMouseDown=false;
+        //全局div
+        var div;
+        var clientX=0;
+        var clientY=0;
+
+
+        window.onload=function(e){
+            //增加鼠标按下事件
+            // div=document.getElementById("div1");
+
+            // div.onmousedown=mouseDownAction;
+            document.onmousemove = mouseMoveAction;
+            // div.onmouseup=mouseUpAction;
+
+            div = document.getElementsByClassName("itemMove")[0];
+            div.ondblclick = mouseUpAction;
+            var item = document.getElementsByClassName("item");
+            for (var i=0;i<item.length;i++){
+                item[i].ondblclick = mouseDownAction;
+                item[i].onmouseup = mouseUpAction;
+            }
+        }
+
+        /**
+         *鼠标按下
+         */
+        function mouseDownAction(e){
+            // div = this;
+            isMouseDown=true;
+            //记录下鼠标点击的时候的位置
+            clientX= e.clientX;
+            clientY= e.clientY;
+            div.style.left = clientX-10+"px";
+            div.style.top = clientY+"px";
+            div.innerHTML = this.innerHTML;
+            div.setAttribute("data-id",this.getAttribute("data-id"));
+            div.style.display = "block";
+        }
+
+        /**
+         *鼠标移动
+         */
+        function mouseMoveAction(e){
+            if(isMouseDown){
+                div.style.left= e.clientX-10+"px";
+                div.style.top= e.clientY+"px";
+            }
+        }
+        /**
+         *鼠标弹起来
+         */
+        function mouseUpAction(e){
+            isMouseDown=false;
+            clientX = 0;
+            clientY = 0;
+            div.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+<div class="div1" id="div1">
+    双击下面的选择项
+</div>
+
+<div class="div2" id="div2">
+    <div class="item" data-id="1">...这是第一项...</div>
+    <div class="item" data-id="2">...这是第二项...</div>
+    <div class="item" data-id="3">...这是第三项...</div>
+    <div class="item" data-id="4">...这是第四项...</div>
+</div>
+<div class="itemMove" data-id="">...XXXX...</div>
+<iframe src="2.html">
+
+</iframe>
+</body>
+</html>
